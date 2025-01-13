@@ -1,0 +1,21 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: whoami-http
+  namespace: default
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik-v2
+  hostnames:
+    - whoami.k8s.orb.local
+  rules:
+     - matches:
+        - path:
+            type: PathPrefix
+            value: /
+
+       backendRefs:
+        - name: whoami
+          namespace: default
+          port: 80
