@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: example-quota
+  namespace: default
+spec:
+  hard:
+    pods: "10"                  # Limite le nombre total de pods à 10
+    requests.cpu: "4"           # Total des CPU demandés limité à 4 unités
+    requests.memory: "16Gi"     # Total de mémoire demandée limité à 16Gi
+    limits.cpu: "8"             # Total des limites de CPU fixé à 8 unités
+    limits.memory: "32Gi"       # Total des limites de mémoire fixé à 32Gi
+    persistentvolumeclaims: "5" # Limite le nombre de PVC à 5
+    requests.storage: "500Gi"   # Limite le stockage demandé à 500Gi
+    limits.ephemeral-storage: 2Gi # Limite le stockage ephemère à 2 Gi
